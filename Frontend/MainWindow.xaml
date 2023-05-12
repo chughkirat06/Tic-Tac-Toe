@@ -1,0 +1,79 @@
+﻿<Window x:Class="FinalExam_PrabhkiratKaurChugh_8890008.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinalExam_PrabhkiratKaurChugh_8890008"
+        mc:Ignorable="d"
+        Title="Tic-Tac-Toe" Height="600" Width="650"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBlueColor" Color="#E36259"/>
+        <SolidColorBrush x:Key="PrimaryTextColor" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="ButtonMouseOverColor" Color="#D83024"/>
+        <SolidColorBrush x:Key="ButtonMousePressedColor" Color="#EEA29D"/>
+
+        <!-- Start: PrimaryButtonStyle -->
+        <Style x:Key="PrimaryButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{DynamicResource PrimaryBlueColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+            <Setter Property="FontWeight" Value="Black"/>
+            <Setter Property="Padding" Value="12 6 12 6"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="MaxHeight" Value="40"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="btnBorder" CornerRadius="20" 
+                                Background="{TemplateBinding Background}"
+                                Width="{TemplateBinding Width}"
+                                MaxHeight="{TemplateBinding MaxHeight}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="ContentPresenter" Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="btnBorder" Property="Background"
+                                        Value="{DynamicResource ButtonMouseOverColor}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="btnBorder" Property="Background"
+                                        Value="{DynamicResource ButtonMousePressedColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- End: PrimaryButtonStyle-->
+    </Window.Resources>
+
+    <Grid>
+        <Border CornerRadius="30"
+                Background="#F2E7E7"
+                BorderBrush="#E36259"
+                BorderThickness="5"/>
+
+        <StackPanel Margin="0 20 0 0">
+            <Image Source="C:\Users\chugh\Downloads\logo4.png" Width="100" Height="80"/>
+            <TextBlock Text="Tic-Tac-Toe" Foreground="#E36259" FontSize="25" FontWeight="Bold" FontFamily="Montserrat" HorizontalAlignment="Center" Height="24"/>
+        </StackPanel>
+
+        <Button Content="User vs User" Cursor="Hand" Style="{DynamicResource PrimaryButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,179,0,0" Click="UserVsUserButton" FontWeight="Medium" Width="180"/>
+        <Button Content="User vs Computer" Cursor ="Hand" Style="{DynamicResource PrimaryButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,262,0,0" Click="UserVsComputerButton" FontWeight="Medium" Width="180"/>
+        <Button Content="Computer vs Computer" Cursor="Hand" Style="{DynamicResource PrimaryButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,342,0,0" Click="ComputerVsComputerButton" FontWeight="Medium" Width="210"/>
+        <Button Content="Resume" Cursor="Hand" Style="{DynamicResource PrimaryButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,427,0,0" FontWeight="Medium" Click="ResumeButton"/>
+    </Grid>
+</Window>
